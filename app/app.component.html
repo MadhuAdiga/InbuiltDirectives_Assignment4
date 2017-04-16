@@ -1,0 +1,34 @@
+
+    <div class="container container-fluid"> 
+        
+        <h2> Inbuilt Directives </h2>      
+                
+            <div id="employeeNames">
+                <ul class="nav nav-pills nav-stacked" > <!--A list of the roles that can be chosen from -->
+                    <li *ngFor="let role of role_arr; let index=index; let odd=odd; let even=even;" [ngClass]="{ odd: odd, even: even }" (click)="openEmpDetails(role)" ><button class="btn btn-primary"> {{role}} </button></li><!--The click of this button triggers a function openEmpDetails() to fetch the user details with the input role -->
+                </ul>
+            </div>
+            <br><br>
+            <button class="btn btn-default" (click)="reset()">Reset Role</button>  <!--The click of this button triggers a function reset() to empty the table with previous role details -->          
+            <hr>
+
+
+         
+            <!--Create a rersponsive, striped, bordered bootstrap table  -->
+         <div class="table table-responsive" *ngIf="filterArr.length">  <!-- Check if user.arr has values. If yes, create a bootstrap table -->
+            <table>     
+                <thead>
+                    <tr class="tabrow">  
+                        <th class="tabrow">List of users in the chosen role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let a of filterArr"><!-- Iterate through the filterArr to display details of users in the chosen role -->
+                        <td class="tabcell">{{a}}</td>                        
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+    </div>
+       
+        
